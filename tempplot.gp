@@ -1,4 +1,5 @@
-# Plot temperatures and send output to stdout
+# Plot temperatures  from t1.txt and t2.txt in
+# /home/pi/house_monitor_files and send gif output to stdout
 #
 # Use:
 #
@@ -17,5 +18,5 @@ set ylabel "Deg. F" font "sans, 10"
 set key font "sans,10"
 set grid
 
-plot "t1.txt" using 1:3 title "Outdoor Temp" with line, "t2.txt" using 1:3 title "Indoor Temp" with line
+plot "/home/pi/house_monitor_files/t1.txt" using 1:3 title "Outdoor Temp" with line, "/home/pi/house_monitor_files/t2.txt" using 1:3 title "Indoor Temp" with line
 
