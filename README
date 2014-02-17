@@ -1,0 +1,63 @@
+Files needed to support home monitor web page:
+
+/var/www/.htaccess: 
+
+sets default page to status-new.cgi as follows:
+
+Options +Includes
+#DirectoryIndex  /usr/lib/cgi-bin/status-new.cgi
+DirectoryIndex  cgi-bin/status-new.cgi
+
+/usr/lib/cgi-bin/status-new.cgi:
+
+Main web page generator script, calls other programs to 
+build html web page and supporting file:
+
+/usr/lib/cgi-bin/takephoto.cgi:
+
+CGI script to take photo and return web page with photo and photo details.
+
+/usr/bin/gnuplot
+
+/home/pi/house_monitor_files/tempplot.gp: 
+
+gnuplot commands to plot temperatures from t1.txt
+and t2.txt
+
+/usr/bin/raspistill: 
+
+take picture and save as jpg file
+
+
+/home/pi/house_monitor_files/imagedata-arg.py: 
+
+open image file (argument 1) and 
+get date and size of file, return as html centered paragraph.
+
+/home/pi/house_monitor_files/gettemps-plot.pl: 
+
+Read data files t1.txt and t1.txt 
+and return last 10 temperature points as html list.
+
+
+/var/www/data: 
+
+directory to hold photos and intermediate files, like plot oimages.
+
+
+crontab files:
+
+Usr pi:
+
+@reboot /home/pi/tunnel/ngrok.sh >/home/pi/tunnel/ngrok.log
+
+@reboot /home/pi/house_monitor_files/1wiretemp.sh >/home/pi/house_monitor_files/1wiretemp.log
+
+User www-data:
+
+0 7,8,9,10,11,12,13,14,15,16,17 * * * /home/pi/house_monitor_files/periodic_photo.sh
+
+/home/pi/house_monitor_files/periodic_photo.sh:  
+
+Take picture  at 7, 8, 9, ... 
+times of day and save in /var/www/data. Uses raspistill.

@@ -28,7 +28,7 @@ while ( $n-- > 0) {
 	$t2 = <T2FILE>;
 	chomp( $t2 );
 	if ( $n < 10 ) {
-		print ("<li>T1: $t1            T2: $t2</li>\n");
+		print ("<li>T1: $t1            T2: $t2</li>");
 	}
 }
 print "</pre>\n";
