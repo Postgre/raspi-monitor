@@ -8,7 +8,7 @@ echo "`date`: starting 1wire temperature sensor interface in `pwd`" >>1wiretemp.
 while [ 1 ]
 do
 	echo "`date`: re-plot-w1.py being started." >>1wiretemp.txt
-	./re-plot-w1.py
+	./1wiretemps.py
 	echo "`date`: re-plot-w1.py exited." >>1wiretemp.txt
 	sleep 30
 done
